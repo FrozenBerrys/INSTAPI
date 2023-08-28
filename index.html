@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+</head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS file -->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
+<body>
+    <h1>WOLF <br> SUBMISSIONS</h1>
+    <form action="/submit" method="POST" enctype="multipart/form-data">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="text">Your message (max 40 characters):</label>
+        <input type="text" id="text" name="text" maxlength="40" required><br><br>
+
+        <label for="image">Your wolf (.img file):</label>
+        <input type="file" id="image" name="image" accept="image/*" required><br><br>
+
+        <input type="hidden" id="currentDate" name="currentDate">
+        <script>
+            const currentDateInput = document.getElementById("currentDate");
+            const currentDate = new Date();
+            currentDateInput.value = currentDate.toISOString(); // Format: YYYY-MM-DDTHH:mm:ss.sssZ
+        </script>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
